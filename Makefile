@@ -3,7 +3,7 @@ all:
 	strip libk2v.so
 	$(CC) -std=gnu99 -c -o libk2v.o src/k2v.c
 	ar -r libk2v.a libk2v.o
-	$(CC) -static -fPIE -fstack-protector-all -fstack-clash-protection -mshstk  -D_FORTIFY_SOURCE=3 -Wno-unused-result -O2 -std=gnu99 -Wno-gnu-zero-variadic-macro-arguments -lk2v -L. -o k2sh -z noexecstack -z now src/k2sh.c
+	$(CC) -static -fPIE -fstack-protector-all -fstack-clash-protection -mshstk  -D_FORTIFY_SOURCE=3 -Wno-unused-result -O2 -std=gnu99 -Wno-gnu-zero-variadic-macro-arguments -Wl,--gc-sections -lk2v -L. -o k2sh -z noexecstack -z now src/k2sh.c
 	strip k2sh
 	rm libk2v.o
 format:
