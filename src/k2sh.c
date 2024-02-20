@@ -4,13 +4,13 @@ int main(int argc, char **argv)
 {
 	k2v_show_warning = false;
 	if (argc < 2) {
-		fprintf(stderr,"\033[31mUsage: k2sh [k2v_file]\n\033[0m");
+		fprintf(stderr, "\033[31mUsage: k2sh [k2v_file]\n\033[0m");
 		return 1;
 	}
 	// Read the config to memory.
 	int fd = open(argv[1], O_RDONLY);
-	if(fd<0){
-		fprintf(stderr,"\033[31mNo such file or directory:%s\n\033[0m",argv[1]);
+	if (fd < 0) {
+		fprintf(stderr, "\033[31mNo such file or directory:%s\n\033[0m", argv[1]);
 		return 1;
 	}
 	struct stat filestat;

@@ -318,16 +318,16 @@ char *key_get_char(const char *key, const char *buf)
 int key_get_int(const char *key, const char *buf)
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = key_get_right(key, buf);
 	if (tmp == NULL) {
-		return -1;
+		return 0;
 	}
 	char *val = cuts(tmp, '"', '"');
 	if (val == NULL) {
-		return -1;
+		return 0;
 	}
 	ret = atoi(val);
 	return ret;
@@ -335,16 +335,16 @@ int key_get_int(const char *key, const char *buf)
 float key_get_float(const char *key, const char *buf)
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
 	}
 	float ret = 0;
 	char *tmp = key_get_right(key, buf);
 	if (tmp == NULL) {
-		return -1;
+		return 0;
 	}
 	char *val = cuts(tmp, '"', '"');
 	if (val == NULL) {
-		return -1;
+		return 0;
 	}
 	ret = (float)atof(val);
 	return ret;
@@ -373,7 +373,10 @@ bool key_get_bool(const char *key, const char *buf)
 static int char_to_int_array(const char *buf, int *array)
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
+	}
+	if (is_null_val(buf)) {
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = NULL;
@@ -395,7 +398,10 @@ static int char_to_int_array(const char *buf, int *array)
 static int char_to_float_array(const char *buf, float *array)
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
+	}
+	if (is_null_val(buf)) {
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = NULL;
@@ -417,7 +423,10 @@ static int char_to_float_array(const char *buf, float *array)
 static int char_to_char_array(const char *buf, char *array[])
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
+	}
+	if (is_null_val(buf)) {
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = NULL;
@@ -440,12 +449,12 @@ static int char_to_char_array(const char *buf, char *array[])
 int key_get_int_array(const char *key, const char *buf, int *array)
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = key_get_right(key, buf);
 	if (tmp == NULL) {
-		return -1;
+		return 0;
 	}
 	ret = char_to_int_array(tmp, array);
 	free(tmp);
@@ -454,12 +463,12 @@ int key_get_int_array(const char *key, const char *buf, int *array)
 int key_get_char_array(const char *key, const char *buf, char *array[])
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = key_get_right(key, buf);
 	if (tmp == NULL) {
-		return -1;
+		return 0;
 	}
 	ret = char_to_char_array(tmp, array);
 	free(tmp);
@@ -468,12 +477,12 @@ int key_get_char_array(const char *key, const char *buf, char *array[])
 int key_get_float_array(const char *key, const char *buf, float *array)
 {
 	if (buf == NULL) {
-		return -1;
+		return 0;
 	}
 	int ret = 0;
 	char *tmp = key_get_right(key, buf);
 	if (tmp == NULL) {
-		return -1;
+		return 0;
 	}
 	ret = char_to_float_array(tmp, array);
 	free(tmp);
