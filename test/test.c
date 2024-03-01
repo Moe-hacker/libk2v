@@ -69,6 +69,14 @@ int main(void)
 	printf(have_key("xxxx", buf) ? "true\n" : "false\n");
 	printf(have_key("yyyy", buf) ? "true\n" : "false\n");
 	printf(have_key("zzzz", buf) ? "true\n" : "false\n");
+	printf("%s", int_to_k2v("int_val", int_val));
+	printf("%s", char_to_k2v("char_val", char_val));
+	printf("%s", float_to_k2v("float_val", float_val));
+	printf("%s", bool_to_k2v("bool_val", bool_val));
+	printf("%s", char_array_to_k2v("char_array_val", char_array_val, 3));
+	printf("%s", int_array_to_k2v("int_array_val", int_array_val, 3));
+	printf("%s", float_array_to_k2v("float_array_val", float_array_val, 3));
+
 	free(char_val);
 	k2v_to_shell(buf);
 	free(buf);

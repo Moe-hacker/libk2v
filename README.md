@@ -9,16 +9,17 @@ K2V looks like TOML(Tom's Obvious, Minimal Language).
 TOML prioritizes humans, but K2V only prioritizes the developer.      
 TOML is very powerful, but K2V is simple, and it's good enough in many scenarios.      
 K2V can be easily convert to bash with `k2sh`.      
-libk2v only contain 500- lines of code, while tomlc99 have 2000+.      
+libk2v only contain 1000- lines of code, while tomlc99 have 2000+.      
 # K2V standard:
+```
  * We will always use a (char *)key to get the value.
  * The comment line starts with `#`, and `#` should be the first character of the line.
  * All the value should be wrapped by `"`, and do not use `'`.
  * The key should not be wrapped.
  * The end of a line is '\n', and will not contain `;` or `,`.
- * The array value should be separated by `,`.
+ * The array is wrapped by `[]`,and each value should be separated by `,`.
  * It does not support multi-line, so use single line for one key/value pair.
-
+```
 # Supported types:
 ```toml
 # Bool value.
@@ -91,6 +92,13 @@ int key_get_float_array(const char *key, const char *buf, float *array);
 bool have_key(const char *key, const char *buf);
 char *k2v_open_file(char *path, size_t bufsize);
 void k2v_to_shell(const char *buf);
+char *char_to_k2v(const char *key, const char *val);
+char *int_to_k2v(const char *key, int val);
+char *bool_to_k2v(const char *key, bool val);
+char *float_to_k2v(const char *key, float val);
+char *char_array_to_k2v(const char *key, char *const *val, int len);
+char *int_array_to_k2v(const char *key, int *val, int len);
+char *float_array_to_k2v(const char *key, float *val, int len);
 ```
 For usage, see [test/test.c](test/test.c).      
 # Global variables:
