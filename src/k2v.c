@@ -638,6 +638,7 @@ char *int_array_to_k2v(const char *key, int *val, int len)
 	strcat(buf, "\n");
 	char *ret = strdup(buf);
 	free(buf);
+	free(tmp);
 	return ret;
 }
 char *float_array_to_k2v(const char *key, float *val, int len)
@@ -657,5 +658,6 @@ char *float_array_to_k2v(const char *key, float *val, int len)
 	strcat(buf, "\n");
 	char *ret = strdup(buf);
 	free(buf);
+	free(tmp);
 	return ret;
 }
