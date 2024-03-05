@@ -49,6 +49,13 @@ int_array_val=("1" "2" "3")
 float_array_val=("1.0" "2.0" "3.0")
 char_array_val=("string1" "string2" "string3")
 ```
+To use k2sh:      
+```
+tmpfile=$(mktemp)
+./k2sh test/test.conf > $tmpfile
+source $tmpfile
+rm $tmpfile
+```
 # Hello world:
 test/hello.conf:
 ```toml
