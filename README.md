@@ -80,8 +80,9 @@ Hello world!
 ```
 # Using libk2v:
 You can just simply include the k2v.c and k2v.h files in your project.      
-# An example program using libk2v:
+# Example program using libk2v:
 [ruri/src/rurienv.c](https://github.com/Moe-hacker/ruri/blob/main/src%2Frurienv.c)
+[ruri/src/config.c](https://github.com/Moe-hacker/ruri/blob/main/src%2Fconfig.c)
 # Function list:
 ```C
 char *key_get_char(const char *key, const char *buf);
