@@ -15,6 +15,7 @@ libk2v only contain 1000- lines of code, while tomlc99 have 2000+.
  * We will always use a (char *)key to get the value.
  * The comment line starts with `#`, and `#` should be the first character of the line.
  * All the value should be wrapped by `"`, and do not use `'`.
+ * Don't nest `""` within the value, you can use `''` if you really need.
  * The key should not be wrapped.
  * The end of a line is '\n', and will not contain `;` or `,`.
  * The array is wrapped by `[]`,and each value should be separated by `,`.
