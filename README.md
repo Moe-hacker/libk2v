@@ -114,8 +114,11 @@ char *char_array_to_k2v(const char *key, char *const *val, int len);
 char *int_array_to_k2v(const char *key, int *val, int len);
 char *float_array_to_k2v(const char *key, float *val, int len);
 size_t k2v_get_filesize(const char *path);
-k2v_add_config(type, __k2v_buf, ...);
+// This is a macro and it need GNU C.
+char * k2v_add_config(type, __k2v_buf, ...);
+char *k2v_add_comment(char *buf,char *comment);
 ```
+
 For usage, see [test/test.c](test/test.c).      
 # Global variables:
 ```C
