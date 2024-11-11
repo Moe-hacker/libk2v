@@ -96,27 +96,27 @@ You can just simply include the k2v.c and k2v.h files in your project.
 [ruri/src/config.c](https://github.com/Moe-hacker/ruri/blob/main/src%2Fconfig.c)
 # Function list:
 ```C
-char *key_get_char(const char *key, const char *buf);
-int key_get_int(const char *key, const char *buf);
-float key_get_float(const char *key, const char *buf);
-bool key_get_bool(const char *key, const char *buf);
-int key_get_int_array(const char *key, const char *buf, int *array);
-int key_get_char_array(const char *key, const char *buf, char *array[]);
-int key_get_float_array(const char *key, const char *buf, float *array);
-bool have_key(const char *key, const char *buf);
-char *k2v_open_file(char *path, size_t bufsize);
-void k2v_to_shell(const char *buf);
-char *char_to_k2v(const char *key, const char *val);
-char *int_to_k2v(const char *key, int val);
-char *bool_to_k2v(const char *key, bool val);
-char *float_to_k2v(const char *key, float val);
-char *char_array_to_k2v(const char *key, char *const *val, int len);
-char *int_array_to_k2v(const char *key, int *val, int len);
-char *float_array_to_k2v(const char *key, float *val, int len);
-size_t k2v_get_filesize(const char *path);
+char *key_get_char(const char *_Nonnull key, const char *_Nonnull buf);
+int key_get_int(const char *_Nonnull key, const char *_Nonnull buf);
+float key_get_float(const char *_Nonnull key, const char *_Nonnull buf);
+bool key_get_bool(const char *_Nonnull key, const char *_Nonnull buf);
+int key_get_int_array(const char *_Nonnull key, const char *_Nonnull buf, int *_Nonnull array, int limit);
+int key_get_char_array(const char *_Nonnull key, const char *_Nonnull buf, char *_Nonnull array[], int limit);
+int key_get_float_array(const char *_Nonnull key, const char *_Nonnull buf, float *_Nonnull array, int limit);
+bool have_key(const char *_Nonnull key, const char *_Nonnull buf);
+char *k2v_open_file(const char *_Nonnull path, size_t bufsize);
+void k2v_to_shell(const char *_Nonnull buf);
+char *char_to_k2v(const char *_Nonnull key, const char *val);
+char *int_to_k2v(const char *_Nonnull key, int val);
+char *bool_to_k2v(const char *_Nonnull key, bool val);
+char *float_to_k2v(const char *_Nonnull key, float val);
+char *char_array_to_k2v(const char *_Nonnull key, char *const *_Nonnull val, int len);
+char *int_array_to_k2v(const char *_Nonnull key, int *_Nonnull val, int len);
+char *float_array_to_k2v(const char *_Nonnull key, float *_Nonnull val, int len);
+size_t k2v_get_filesize(const char *_Nonnull path);
+char *k2v_add_comment(char *_Nullable buf,char *_Nonnull comment);
 // This is a macro and it need GNU C.
 char * k2v_add_config(type, __k2v_buf, ...);
-char *k2v_add_comment(char *buf,char *comment);
 ```
 
 For usage, see [test/test.c](test/test.c).      
