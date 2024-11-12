@@ -114,7 +114,9 @@ char *char_array_to_k2v(const char *_Nonnull key, char *const *_Nonnull val, int
 char *int_array_to_k2v(const char *_Nonnull key, int *_Nonnull val, int len);
 char *float_array_to_k2v(const char *_Nonnull key, float *_Nonnull val, int len);
 size_t k2v_get_filesize(const char *_Nonnull path);
-char *k2v_add_comment(char *_Nullable buf,char *_Nonnull comment);
+char *k2v_add_comment(char *_Nullable buf, char *_Nonnull comment);
+// This is a macro.
+k2v_get_key(type, ...);
 // This is a macro and it need GNU C.
 char * k2v_add_config(type, __k2v_buf, ...);
 ```

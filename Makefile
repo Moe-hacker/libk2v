@@ -17,7 +17,7 @@ dev:
 	$(CC) -static -ggdb -O0 -fno-omit-frame-pointer -z norelro -z execstack -fno-stack-protector -Wall -Wextra -pedantic -Wconversion -Wno-newline-eof -Wl,--gc-sections -o k2sh src/k2sh.c ./libk2v.a
 	rm libk2v.o
 test:dev
-	$(CC) -ggdb -O0 -fno-omit-frame-pointer -z norelro -z execstack -fno-stack-protector -Wall -Wextra -pedantic -Wconversion -Wno-newline-eof -Wl,--gc-sections -L. -lk2v -o testk2v test/test.c
+	$(CC) -ggdb -static -O0 -fno-omit-frame-pointer -z norelro -z execstack -fno-stack-protector -Wall -Wextra -pedantic -Wconversion -Wno-newline-eof -Wl,--gc-sections -L. -lk2v -o testk2v test/test.c -lk2v
 check:
 	clang-tidy --checks=*,-clang-analyzer-security.insecureAPI.strcpy,-altera-unroll-loops,-cert-err33-c,-concurrency-mt-unsafe,-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,-readability-function-cognitive-complexity,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-bugprone-easily-swappable-parameters,-cert-err34-c,-misc-include-cleaner,-readability-identifier-length,-bugprone-signal-handler,-cert-msc54-cpp,-cert-sig30-c,-altera-id-dependent-backward-branch,-cppcoreguidelines-avoid-non-const-global-variables src/k2v.c --
 clean:
