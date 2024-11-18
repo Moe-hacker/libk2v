@@ -21,19 +21,19 @@ int main(void)
 
 	// int_array_val=["1","2","3"]
 	int int_array_val[15] = { 0 };
-	int intlen = key_get_int_array("int_array_val", buf, int_array_val,15);
+	int intlen = key_get_int_array("int_array_val", buf, int_array_val, 15);
 	// key_get_int_array will return the lenth of the array.
 	// We set the end of int_array_val to 0.
 	int_array_val[intlen] = 0;
 
 	// float_array_val=["1.0","2.0","3.0"]
 	float float_array_val[15] = { 0 };
-	int floatlen = key_get_float_array("float_array_val", buf, float_array_val,15);
+	int floatlen = key_get_float_array("float_array_val", buf, float_array_val, 15);
 	float_array_val[floatlen] = 0;
 
 	// char_array_val=["string1","string2","string3"]
 	char *char_array_val[15] = { NULL };
-	key_get_char_array("char_array_val", buf, char_array_val,15);
+	key_get_char_array("char_array_val", buf, char_array_val, 15);
 
 	// Null string test.
 	if (key_get_char("null_char", buf) == NULL) {
@@ -42,6 +42,7 @@ int main(void)
 
 	// Print the value we get.
 	printf("%s\n", char_val);
+	free(char_val);
 	printf(bool_val ? "true\n" : "false\n");
 	printf("%d\n", int_val);
 	printf("%f\n", float_val);
@@ -65,21 +66,12 @@ int main(void)
 			break;
 		}
 		printf("%s ", char_array_val[i]);
+		free(char_array_val[i]);
 	}
 
 	// have_key test.
 	printf(have_key("xxxx", buf) ? "true\n" : "false\n");
 	printf(have_key("yyyy", buf) ? "true\n" : "false\n");
 	printf(have_key("zzzz", buf) ? "true\n" : "false\n");
-	printf("%s", int_to_k2v("int_val", int_val));
-	printf("%s", char_to_k2v("char_val", char_val));
-	printf("%s", float_to_k2v("float_val", float_val));
-	printf("%s", bool_to_k2v("bool_val", bool_val));
-	printf("%s", char_array_to_k2v("char_array_val", char_array_val, 3));
-	printf("%s", int_array_to_k2v("int_array_val", int_array_val, 3));
-	printf("%s", float_array_to_k2v("float_array_val", float_array_val, 3));
-
-	free(char_val);
-	k2v_to_shell(buf);
 	free(buf);
 }

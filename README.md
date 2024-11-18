@@ -8,7 +8,6 @@ It only designed for one purpose:
 K2V looks like TOML(Tom's Obvious, Minimal Language).      
 TOML prioritizes humans, but K2V only prioritizes the developer.      
 TOML is very powerful, but K2V is simple, and it's good enough in many scenarios.      
-K2V can be easily convert to bash with `k2sh`.      
 libk2v only contain 1000- lines of code, while tomlc99 have 2000+.      
 # K2V standard:
 ```
@@ -38,25 +37,6 @@ int_array_val=["1","2","3"]
 float_array_val=["1.0","2.0","3.0"]
 # Char array.
 char_array_val=["string1","string2","string3"]
-```
-# K2SH:
-`k2sh` is a binary that converts k2v to shell format.            
-The above config will be converted to:         
-```sh
-bool_val="true"
-char_val="string"
-int_val="114514"
-float_val="19.19810"
-int_array_val=("1" "2" "3")
-float_array_val=("1.0" "2.0" "3.0")
-char_array_val=("string1" "string2" "string3")
-```
-To use k2sh:      
-```
-tmpfile=$(mktemp)
-./k2sh test/test.conf > $tmpfile
-source $tmpfile
-rm $tmpfile
 ```
 # Hello world:
 test/hello.conf:
@@ -105,7 +85,6 @@ int key_get_char_array(const char *_Nonnull key, const char *_Nonnull buf, char 
 int key_get_float_array(const char *_Nonnull key, const char *_Nonnull buf, float *_Nonnull array, int limit);
 bool have_key(const char *_Nonnull key, const char *_Nonnull buf);
 char *k2v_open_file(const char *_Nonnull path, size_t bufsize);
-void k2v_to_shell(const char *_Nonnull buf);
 char *char_to_k2v(const char *_Nonnull key, const char *val);
 char *int_to_k2v(const char *_Nonnull key, int val);
 char *bool_to_k2v(const char *_Nonnull key, bool val);
