@@ -73,5 +73,8 @@ int main(void)
 	printf(have_key("xxxx", buf) ? "true\n" : "false\n");
 	printf(have_key("yyyy", buf) ? "true\n" : "false\n");
 	printf(have_key("zzzz", buf) ? "true\n" : "false\n");
+	char *new_char_val = key_get_char("char val", buf);
+	printf(new_char_val == NULL ? "null\n" : new_char_val);
+	free(new_char_val);
 	free(buf);
 }
