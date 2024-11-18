@@ -366,10 +366,14 @@ static char *line_get_left(const char *_Nonnull line)
 	char *ret = malloc(strlen(line) + 1);
 	for (size_t i = 0; i < strlen(line); i++) {
 		if (line[i] == '\\') {
-			ret[i] = line[i];
-			i++;
-			ret[i] = line[i];
-			continue;
+			if (i < strlen(line) - 2) {
+				ret[i] = line[i];
+				i++;
+				ret[i] = line[i];
+				continue;
+			} else {
+				ret[i] = line[i];
+			}
 		}
 		if (line[i] == '=') {
 			ret[i] = '\0';
@@ -970,12 +974,18 @@ static char *__current_val(const char *_Nonnull p)
 	size_t j = 0;
 	for (size_t i = 0; i < strlen(q); i++) {
 		if (q[i] == '\\') {
-			tmp[j] = q[i];
-			i++;
-			j++;
-			tmp[j] = q[i];
-			tmp[j + 1] = '\0';
-			continue;
+			if (i < strlen(q) - 2) {
+				tmp[j] = q[i];
+				i++;
+				j++;
+				tmp[j] = q[i];
+				tmp[j + 1] = '\0';
+				continue;
+			} else {
+				tmp[j] = q[i];
+				tmp[j + 1] = '\0';
+				break;
+			}
 		}
 		if (q[i] == '"') {
 			tmp[j] = '\0';
