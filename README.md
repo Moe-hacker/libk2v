@@ -15,11 +15,15 @@ libk2v only contain 1000- lines of code, while tomlc99 have 2000+.
  * The comment line starts with `#`, and `#` should be the first character of the line.
  * All the value should be wrapped by `"`, and do not use `'`.
  * Don't nest `""` within the value, you can use `''` if you really need.
+ * You can also use '\"', but the output will also contain the '\'.
+ * And use '\\' for '\', because the first '\' will be removed after parsing.
+ * '\n', '\t' and '\r' will be kept.
  * The key should not be wrapped.
  * The end of a line is '\n', and will not contain `;` or `,`.
  * The array is wrapped by `[]`,and each value should be separated by `,`.
  * The value in array should not be `""` (the array should not contain NULL value).
  * It does not support multi-line, so use single line for one key/value pair.
+ * Use ASCII only, unicode including "\0" is not allowed as strlen() cannot recognize it.
 ```
 # Supported types:
 ```toml
