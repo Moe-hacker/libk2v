@@ -12,10 +12,10 @@ libk2v only contain 1000- lines of code, while tomlc99 have 2000+.
 # K2V standard:
 ```
  * We will always use a (char *)key to get the value.
- * The comment line starts with `#`, and `#` should be the first character of the line.
+ * The comment line starts with `#`.
  * All the value should be wrapped by `"`, and do not use `'`.
  * Don't nest `""` within the value, you can use `''` if you really need.
- * You can also use '\"', but the output will also contain the '\'.
+ * You can also use '\"', but the output will also contain the '\', as '\"'.
  * And use '\\' for '\', because the first '\' will be removed after parsing.
  * '\n', '\t' and '\r' will be kept.
  * The key should not be wrapped.
@@ -104,7 +104,7 @@ k2v_get_key(type, ...);
 // This is a macro and it need GNU C.
 char * k2v_add_config(type, __k2v_buf, ...);
 ```
-
+# Usage:
 For usage, see [test/test.c](test/test.c).      
 # Global variables:
 ```C
@@ -117,24 +117,7 @@ extern bool k2v_show_warning;
 ```
 # Benchmarking:
 K2V is designed only for small config files, it need not to be very fast for large config files.      
-Here is a 23 lines config test, it only takes <0.02s on my Nothing Phone(2).      
-```log
-~/libk2v # time ./testk2v
-libk2v warning: unrecognized line: ryudhhdgdg
-libk2v warning: unrecognized line: jdjdhdhhsb=
-libk2v warning: unrecognized line: hdhhhdhdh="
-libk2v warning: unrecognized line: shhdhdh=[
-libk2v warning: unrecognized line: hdusjhsb  jsjsgh hsjdhhd
-null char
-string
-true
-114514
-19.198099
-1 2 3
-1.000000 2.000000 3.000000
-string1 string2 string3
-
-real    0m0.015s
-user    0m0.007s
-sys     0m0.008s
+This is testk2v program with 46 lines of confing.      
+```
+0.02s user 0.04s system 70% cpu 0.086 total
 ```
