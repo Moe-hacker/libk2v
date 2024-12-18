@@ -4,11 +4,6 @@ It's simple, rigid, without super cow power, and maybe stupid.
 It only designed for one purpose:      
 - Get the `value` of the `key`.
 
-# Why:
-K2V looks like TOML(Tom's Obvious, Minimal Language).      
-TOML prioritizes humans, but K2V only prioritizes the developer.      
-TOML is very powerful, but K2V is simple, and it's good enough in many scenarios.      
-libk2v only contain 1000- lines of code, while tomlc99 have 2000+.      
 # K2V standard:
 ```
  * We will always use a (char *)key to get the value.
